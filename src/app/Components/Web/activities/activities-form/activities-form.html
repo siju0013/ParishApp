@@ -1,1 +1,71 @@
-<p>activities-form works!</p>
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Create Post</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- File Upload -->
+        <div class="mb-3">
+          <label for="fileUpload" class="form-label">Upload File</label>
+          <input type="file"
+                 id="fileUpload"
+                 class="form-control"
+                 formControlName="file"
+                 (change)="onFileSelected($event)" />
+          <div class="text-danger mt-1"
+               *ngIf="postForm.get('file')?.touched && postForm.get('file')?.invalid">
+            File is required.
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text"
+                 id="title"
+                 class="form-control"
+                 formControlName="title"
+                 placeholder="Enter title" />
+          <div class="text-danger mt-1"
+               *ngIf="postForm.get('title')?.touched && postForm.get('title')?.invalid">
+            Title is required.
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description"
+                    class="form-control"
+                    formControlName="description"
+                    rows="4"
+                    maxlength="150"
+                    placeholder="Enter description (max 150 characters)"></textarea>
+          <div class="form-text text-muted">
+            {{ postForm.get('description')?.value?.length || 0 }}/150
+          </div>
+        </div>
+
+        <!-- Posting Date -->
+        <div class="mb-3">
+          <label for="postingDate" class="form-label">Posting Date</label>
+          <input type="date"
+                 id="postingDate"
+                 class="form-control"
+                 formControlName="postingDate" />
+          <div class="text-danger mt-1"
+               *ngIf="postForm.get('postingDate')?.touched && postForm.get('postingDate')?.invalid">
+            Posting date is required.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
