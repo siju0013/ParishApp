@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.scss'
 })
 export class Dashboard {
-
+  parishMembersCount = 3754;
+  familyCount = 945;
+  birthCertCount = 300;
+  marriageCertCount = 150;
+  deathCertCount = 10;
+  sundaySchoolCount= 467;
+  nonParticipantCount = 56;
+  orgParticipantCount = 67;
 }

@@ -1,1 +1,75 @@
-<p>dashboard works!</p>
+<div class="dashboard-container container-fluid py-4">
+  <div class="row g-4">
+
+    <!-- Parish Members -->
+    <div class="col-md-3 col-sm-6">
+      <div class="dashboard-tile primary-tile">
+        <div class="tile-header">
+          <i class="bi bi-people-fill"></i>
+          <h5>Parish Members</h5>
+        </div>
+        <div class="tile-value">{{ parishMembersCount || 0 }}</div>
+      </div>
+    </div>
+
+    <!-- Family Counts -->
+    <div class="col-md-3 col-sm-6">
+      <div class="dashboard-tile success-tile">
+        <div class="tile-header">
+          <i class="bi bi-house-door-fill"></i>
+          <h5>Family Counts</h5>
+        </div>
+        <div class="tile-value">{{ familyCount || 0 }}</div>
+      </div>
+    </div>
+
+    <!-- Certificate Counts -->
+    <div class="col-md-6">
+      <div class="dashboard-tile info-tile">
+        <div class="tile-header">
+          <i class="bi bi-award-fill"></i>
+          <h5>Certificate Counts</h5>
+        </div>
+        <div class="sub-tile-group">
+          <div class="sub-tile">
+            <span>Birth</span>
+            <strong>{{ birthCertCount || 0 }}</strong>
+          </div>
+          <div class="sub-tile">
+            <span>Marriage</span>
+            <strong>{{ marriageCertCount || 0 }}</strong>
+          </div>
+          <div class="sub-tile">
+            <span>Death</span>
+            <strong>{{ deathCertCount || 0 }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Children -->
+    <div class="col-md-12">
+      <div class="dashboard-tile warning-tile">
+        <div class="tile-header">
+          <i class="bi bi-emoji-smile-fill"></i>
+          <h5>Total Children</h5>
+        </div>
+        <div class="sub-tile-group children-group">
+          <div class="sub-tile">
+            <span>Sunday School</span>
+            <strong>{{ sundaySchoolCount || 0 }}</strong>
+          </div>
+          <div class="sub-tile">
+            <span>Non Participants</span>
+            <strong>{{ nonParticipantCount || 0 }}</strong>
+          </div>
+          <div class="sub-tile">
+            <span>Org. Participants</span>
+            <strong>{{ orgParticipantCount || 0 }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
