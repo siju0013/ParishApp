@@ -1,0 +1,53 @@
+<div class="app-container">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="logo_st josephs.png" alt="Logo" class="logo" />
+      St. Joseph's Parish Management System
+    </div>
+
+    <div class="navbar-right">
+      <input type="text" placeholder="Search..." class="search-box" />
+
+      <div class="profile-menu">
+        <img src="assets/profile.jpg" alt="Profile" class="profile-pic" />
+        <span class="username">John Doe</span>
+        <div class="dropdown">
+          <button class="dropdown-btn">▼</button>
+          <ul class="dropdown-content">
+            <li><a routerLink="/profile">View Profile</a></li>
+            <li><a routerLink="/logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Layout Body -->
+  <div class="layout-body">
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+      <ul>
+        <li><a routerLink="/activities" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/activities" routerLinkActive="active">Activities</a></li>
+        <li><a routerLink="/birth-certificate" routerLinkActive="active">Birth Certificate</a></li>
+        <li><a routerLink="/death-certificate" routerLinkActive="active">Death Certificate</a></li>
+        <li><a routerLink="/marriage-certificate" routerLinkActive="active">Marriage Certificate</a></li>
+        <li><a routerLink="/marriage-certificate" routerLinkActive="active">Confirmation</a></li>
+        <li><a routerLink="/marriage-certificate" routerLinkActive="active">Confirmation</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <span>© 2025 Parish Management System</span>
+      <span class="version">v1.0.0</span>
+    </div>
+  </footer>
+</div>
