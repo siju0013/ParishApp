@@ -1,1 +1,40 @@
-<p>tables works!</p>
+<div class="dynamic-table card shadow-sm">
+  <div class="card-header d-flex justify-content-between align-items-center bg-light">
+    <h5 class="mb-0 fw-semibold" *ngIf="title">{{ title }}</h5>
+    <ng-content select="[table-actions]"></ng-content>
+  </div>
+
+  <div class="table-container"
+       infiniteScroll
+       [infiniteScrollDistance]="1"
+       [infiniteScrollUpDistance]="2"
+       [infiniteScrollThrottle]="300"
+       (scrolled)="onScrollDown()">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light sticky-top">
+        <tr>
+          <th *ngFor="let col of columns">{{ col.title }}</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td *ngFor="let col of columns">
+            {{ row[col.key] }}
+          </td>
+        </tr>
+
+        <tr *ngIf="!data || data.length === 0">
+          <td [attr.colspan]="columns.length" class="text-center text-muted py-4">
+            No records found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center py-3" *ngIf="loading">
+      <div class="spinner-border text-primary spinner-border-sm" role="status"></div>
+      <span class="ms-2 small text-muted">Loading more records...</span>
+    </div>
+  </div>
+</div>

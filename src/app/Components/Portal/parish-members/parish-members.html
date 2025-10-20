@@ -1,1 +1,12 @@
-<p>parish-members works!</p>
+<div table-actions class="d-flex flex-row-reverse mb-3">
+  <button class="btn btn-sm btn-primary">
+    <i class="bi bi-plus-lg"></i> Add Member
+  </button>
+</div>
+<app-tables [columns]="memberColumns"
+            [data]="membersData"
+            [loading]="loading"
+            title="Parish Members"
+            (loadMore)="loadMore()">
+
+</app-tables>

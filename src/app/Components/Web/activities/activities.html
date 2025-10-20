@@ -1,1 +1,15 @@
-<p>activities works!</p>
+
+  <div table-actions class="d-flex flex-row-reverse mb-3">
+    <button class="btn btn-sm btn-primary">
+      <i class="bi bi-plus-lg"></i> Add Activities
+    </button>
+  </div>
+  <app-tables [columns]="activitiesColumns"
+              [data]="activitiesData"
+              [loading]="loading"
+              title="Parish Activities"
+              (loadMore)="loadMore()">
+
+  </app-tables>
+
+
