@@ -1,27 +1,61 @@
 <div class="app-container">
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-left">
-      <img src="logo_st josephs.png" alt="Logo" class="logo" />
-      St. Joseph's Parish Management System
-    </div>
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top px-3">
+    <!-- Logo and Title -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo_st josephs.png" alt="Logo" class="me-2" style="height:40px; width:auto;" />
+      <span class="fs-6 fw-bold text-white">St. Joseph's Parish Management System</span>
+    </a>
 
-    <div class="navbar-right">
-      <input type="text" placeholder="Search..." class="search-box" />
+    <!-- Mobile toggle button -->
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="profile-menu">
-        <img src="user-dummy-img.jpg" alt="Profile" class="profile-pic" />
-        <span class="username">Siju</span>
-        <div class="d-inline-block dropdown show">
-          <button class="btn header-item">▼</button>
-          <ul class="dropdown-content">
-            <li><a routerLink="/profile">View Profile</a></li>
-            <li><a routerLink="/logout">Logout</a></li>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!-- Left side: can add nav links if needed -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Example nav link -->
+        <!--<li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
+        </li>-->
+      </ul>
+
+      <!-- Right side: Search + Profile -->
+      <div class="d-flex align-items-center">
+        <!-- Search box -->
+        <input type="text"
+               class="form-control form-control-sm me-3"
+               placeholder="Search..."
+               aria-label="Search" />
+
+        <!-- Profile dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center dropdown-toggle"
+                  type="button"
+                  id="profileDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+            <img src="user-dummy-img.jpg" alt="Profile" class="rounded-circle me-2" style="width:32px; height:32px;">
+            <span>Siju</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" routerLink="/profile" routerLinkActive="active">View Profile</a></li>
+            <li><a class="dropdown-item" routerLink="/logout">Logout</a></li>
           </ul>
         </div>
       </div>
     </div>
   </nav>
+
+
 
   <!-- Layout Body -->
   <div class="layout-body">

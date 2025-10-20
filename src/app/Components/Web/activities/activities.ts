@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { Tables } from '../../../Shared/tables/tables';
+import { ActivitiesForm } from './activities-form/activities-form';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activities',
-  imports: [Tables],
+  imports: [Tables, ActivitiesForm],
   templateUrl: './activities.html',
   styleUrl: './activities.scss'
 })
 export class Activities {
+  IsNewFormVisible = false;
+  constructor(private router: Router) {
+
+  }
   activitiesColumns = [
     { key: 'id', title: 'ID' },
     { key: 'filename', title: 'FileName' },
@@ -36,5 +42,9 @@ export class Activities {
       this.page++;
       this.loading = false;
     }, 800);
+  }
+  add() {
+    this.IsNewFormVisible = true;
+    this.router.navigate(['/web/activities/New']);
   }
 }

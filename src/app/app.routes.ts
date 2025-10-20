@@ -19,7 +19,14 @@ export const routes: Routes = [
     path: 'web', loadComponent: () => import('./Components/Web/weblayout/weblayout').then(m => m.Weblayout), 
     children: [
       { path: '', loadComponent: () => import('./Components/Web/activities/activities').then(m => m.Activities), data: { breadcrumb: 'Parish Activities' }, },
-      { path: 'activities', loadComponent: () => import('./Components/Web/activities/activities').then(m => m.Activities), data: { breadcrumb: 'Parish Activities' }, }
+      {
+        path: 'activities', loadComponent: () => import('./Components/Web/activities/activities').then(m => m.Activities), data: { breadcrumb: 'Parish Activities' },
+        children: [
+          { path: 'New', loadComponent: () => import('./Components/Web/activities/activities-form/activities-form').then(m => m.ActivitiesForm), data: { breadcrumb: 'New Activities' }, },
+          { path: 'Modify', loadComponent: () => import('./Components/Web/activities/activities-form/activities-form').then(m => m.ActivitiesForm), data: { breadcrumb: 'Modify Activities' }, },
+]
+      },
+      
     ],
     data: { breadcrumb: 'Web' }
   }
