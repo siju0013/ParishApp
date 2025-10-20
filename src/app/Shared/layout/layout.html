@@ -26,16 +26,51 @@
   <!-- Layout Body -->
   <div class="layout-body">
     <!-- Sidebar Menu -->
-    <aside class="sidebar">
-      <ul>
-        <li><a routerLink="/" routerLinkActive="active">Dashboard</a></li>
-        <li><a routerLink="/web/activities" routerLinkActive="active">Activities</a></li>
-        <li><a routerLink="/portal/members" routerLinkActive="active">Parish Member</a></li>
-        <li><a routerLink="/portal/birth-certificate" routerLinkActive="active">Birth Certificate</a></li>
-        <li><a routerLink="/portal/death-certificate" routerLinkActive="active">Death Certificate</a></li>
-        <li><a routerLink="/portal/marriage-certificate" routerLinkActive="active">Marriage Certificate</a></li>
+    <aside class="sidebar bg-light shadow-sm vh-100 d-flex flex-column p-3">
+      <div class="sidebar-header mb-4 text-center">
+        <h5 class="fw-bold text-primary mb-0">Portal</h5>
+        <hr />
+      </div>
+
+      <ul class="nav flex-column nav-pills gap-2">
+        <li class="nav-item">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center">
+            <i class="bi bi-speedometer2 me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/web/activities" routerLinkActive="active" class="nav-link d-flex align-items-center">
+            <i class="bi bi-calendar-event me-2"></i> Activities
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/portal/members" routerLinkActive="active" class="nav-link d-flex align-items-center">
+            <i class="bi bi-people me-2"></i> Parish Members
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/portal/birth-certificate" routerLinkActive="active" class="nav-link d-flex align-items-center">
+            <i class="bi bi-file-earmark-medical me-2"></i> Birth Certificate
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/portal/death-certificate" routerLinkActive="active" class="nav-link d-flex align-items-center">
+            <i class="bi bi-file-earmark-break me-2"></i> Death Certificate
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/portal/marriage-certificate" routerLinkActive="active" class="nav-link d-flex align-items-center">
+            <i class="bi bi-heart me-2"></i> Marriage Certificate
+          </a>
+        </li>
       </ul>
+
+      <div class="mt-auto text-center small text-muted border-top pt-3">
+        © 2025 Parish System
+      </div>
     </aside>
+
+
 
     <!-- Main Content -->
     <main class="content">

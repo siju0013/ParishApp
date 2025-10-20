@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./Components/dashboard/dashboard').then(m => m.Dashboard), data: { breadcrumb: '' } },
+  { path: 'dashboard', loadComponent: () => import('./Components/dashboard/dashboard').then(m => m.Dashboard), data: { breadcrumb: '' } },
   {
     path: 'portal',
     loadComponent: () => import('./Components/Portal/portal-layout/portal-layout').then(m => m.PortalLayout),
