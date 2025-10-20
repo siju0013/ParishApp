@@ -1,75 +1,69 @@
-<div class="dashboard-container container-fluid py-4">
-  <div class="row g-4">
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Dashboard</h2>
 
+  <div class="dashboard-grid">
     <!-- Parish Members -->
-    <div class="col-md-3 col-sm-6">
-      <div class="dashboard-tile primary-tile">
-        <div class="tile-header">
-          <i class="bi bi-people-fill"></i>
-          <h5>Parish Members</h5>
-        </div>
-        <div class="tile-value">{{ parishMembersCount || 0 }}</div>
+    <div class="dashboard-card">
+      <div class="card-icon bg-primary">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div class="card-content">
+        <h4>Parish Members</h4>
+        <p class="value">{{parishMembersCount||0}}</p>
       </div>
     </div>
 
     <!-- Family Counts -->
-    <div class="col-md-3 col-sm-6">
-      <div class="dashboard-tile success-tile">
-        <div class="tile-header">
-          <i class="bi bi-house-door-fill"></i>
-          <h5>Family Counts</h5>
-        </div>
-        <div class="tile-value">{{ familyCount || 0 }}</div>
+    <div class="dashboard-card">
+      <div class="card-icon bg-success">
+        <i class="bi bi-house-heart-fill"></i>
+      </div>
+      <div class="card-content">
+        <h4>Family Counts</h4>
+        <p class="value">{{familyCount||0}}</p>
       </div>
     </div>
 
     <!-- Certificate Counts -->
-    <div class="col-md-6">
-      <div class="dashboard-tile info-tile">
-        <div class="tile-header">
-          <i class="bi bi-award-fill"></i>
-          <h5>Certificate Counts</h5>
+    <div class="dashboard-card large">
+      <div class="card-header">
+        <h4>Certificate Counts</h4>
+      </div>
+      <div class="sub-card-grid">
+        <div class="sub-card">
+          <span>Birth</span>
+          <strong>{{birthCertCount||0}}</strong>
         </div>
-        <div class="sub-tile-group">
-          <div class="sub-tile">
-            <span>Birth</span>
-            <strong>{{ birthCertCount || 0 }}</strong>
-          </div>
-          <div class="sub-tile">
-            <span>Marriage</span>
-            <strong>{{ marriageCertCount || 0 }}</strong>
-          </div>
-          <div class="sub-tile">
-            <span>Death</span>
-            <strong>{{ deathCertCount || 0 }}</strong>
-          </div>
+        <div class="sub-card">
+          <span>Marriage</span>
+          <strong>{{marriageCertCount||0}}</strong>
+        </div>
+        <div class="sub-card">
+          <span>Death</span>
+          <strong>{{deathCertCount||0}}</strong>
         </div>
       </div>
     </div>
 
     <!-- Total Children -->
-    <div class="col-md-12">
-      <div class="dashboard-tile warning-tile">
-        <div class="tile-header">
-          <i class="bi bi-emoji-smile-fill"></i>
-          <h5>Total Children</h5>
+    <div class="dashboard-card large">
+      <div class="card-header">
+        <h4>Total Children</h4>
+      </div>
+      <div class="sub-card-grid">
+        <div class="sub-card">
+          <span>Sunday School</span>
+          <strong>{{sundaySchoolCount||0}}</strong>
         </div>
-        <div class="sub-tile-group children-group">
-          <div class="sub-tile">
-            <span>Sunday School</span>
-            <strong>{{ sundaySchoolCount || 0 }}</strong>
-          </div>
-          <div class="sub-tile">
-            <span>Non Participants</span>
-            <strong>{{ nonParticipantCount || 0 }}</strong>
-          </div>
-          <div class="sub-tile">
-            <span>Org. Participants</span>
-            <strong>{{ orgParticipantCount || 0 }}</strong>
-          </div>
+        <div class="sub-card">
+          <span>Non Participant</span>
+          <strong>{{nonParticipantCount||0}}</strong>
+        </div>
+        <div class="sub-card">
+          <span>Organization Participants</span>
+          <strong>{{orgParticipantCount||0}}</strong>
         </div>
       </div>
     </div>
-
   </div>
 </div>
