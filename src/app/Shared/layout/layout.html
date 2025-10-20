@@ -28,17 +28,18 @@
     <!-- Sidebar Menu -->
     <aside class="sidebar">
       <ul>
-        <li><a routerLink="/activities" routerLinkActive="active">Dashboard</a></li>
-        <li><a routerLink="/activities" routerLinkActive="active">Activities</a></li>
-        <li><a routerLink="/birth-certificate" routerLinkActive="active">Birth Certificate</a></li>
-        <li><a routerLink="/death-certificate" routerLinkActive="active">Death Certificate</a></li>
-        <li><a routerLink="/marriage-certificate" routerLinkActive="active">Marriage Certificate</a></li>
-        <li><a routerLink="/marriage-certificate" routerLinkActive="active">Confirmation</a></li>
+        <li><a routerLink="/" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/web/activities" routerLinkActive="active">Activities</a></li>
+        <li><a routerLink="/portal/members" routerLinkActive="active">Parish Member</a></li>
+        <li><a routerLink="/portal/birth-certificate" routerLinkActive="active">Birth Certificate</a></li>
+        <li><a routerLink="/portal/death-certificate" routerLinkActive="active">Death Certificate</a></li>
+        <li><a routerLink="/portal/marriage-certificate" routerLinkActive="active">Marriage Certificate</a></li>
       </ul>
     </aside>
 
     <!-- Main Content -->
     <main class="content">
+      <app-bread-crumb></app-bread-crumb>
       <router-outlet />
     </main>
   </div>
