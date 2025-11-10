@@ -1,0 +1,70 @@
+.parish-member {
+  .card-header {
+    background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+
+    h5 {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #212529;
+    }
+  }
+
+  .nav-tabs {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+
+    .nav-link {
+      color: #495057;
+      padding: .6rem 1rem;
+      font-weight: 500;
+      border: none;
+      border-bottom: 3px solid transparent;
+
+      &:hover {
+        color: #212529;
+      }
+
+      &.active {
+        color: #0b5ed7;
+        border-bottom-color: #0b5ed7;
+        background: transparent;
+      }
+    }
+  }
+
+  .tab-content {
+    padding-top: 0.25rem;
+  }
+
+  .org-list {
+    .org-row {
+      background: rgba(11,94,215,0.02);
+      border: 1px solid rgba(11,94,215,0.06);
+      border-radius: .5rem;
+    }
+  }
+  // responsive tweaks
+  @media (max-width: 767.98px) {
+    .nav-tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      .nav-item {
+        flex: 0 0 auto;
+      }
+    }
+  }
+  // subtle form focus
+  .form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.15rem rgba(11,94,215,0.12);
+    border-color: #0b5ed7;
+  }
+
+  .invalid-feedback {
+    display: block;
+  }
+
+  .btn {
+    border-radius: 0.4rem;
+  }
+}

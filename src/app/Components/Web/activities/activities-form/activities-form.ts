@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ActivitiesForm {
   postForm: FormGroup;
-
+  @Output() cancelForm = new EventEmitter<boolean>();
   constructor(private fb: FormBuilder) {
     this.postForm = this.fb.group({
       file: [null, Validators.required],
@@ -32,5 +32,8 @@ export class ActivitiesForm {
       console.log('Form Value:', this.postForm.value);
       // Handle form submission logic here
     }
+  }
+  onCancel() {
+    this.cancelForm.emit(false);
   }
 }

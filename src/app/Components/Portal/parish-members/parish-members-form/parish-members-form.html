@@ -1,0 +1,365 @@
+<div class="parish-member card shadow-sm">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    <h5 class="mb-0">Create Parish Member</h5>
+    <div>
+      <button class="btn btn-primary btn-sm" (click)="submitAll()">Save All</button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" [class.active]="activeTab === 'general'" (click)="setTab('general')" type="button">General</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" [class.active]="activeTab === 'birth'" (click)="setTab('birth')" type="button">Birth</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" [class.active]="activeTab === 'communion'" (click)="setTab('communion')" type="button">First Holy Communion</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" [class.active]="activeTab === 'confirmation'" (click)="setTab('confirmation')" type="button">Confirmation</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" [class.active]="activeTab === 'org'" (click)="setTab('org')" type="button">Organization Post</button>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+
+      <!-- GENERAL -->
+      <div *ngIf="activeTab === 'general'" class="tab-pane active">
+        <form [formGroup]="general" (ngSubmit)="onSubmitGeneral()" class="row g-3 needs-validation" novalidate>
+          <div class="col-md-4">
+            <label class="form-label">First Name <span class="text-danger">*</span></label>
+            <input type="text" formControlName="firstName" class="form-control"
+                   [class.is-invalid]="general.get('firstName')?.invalid && (general.get('firstName')?.touched || general.get('firstName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('firstName')?.errors?.['required']">
+              First name is required.
+            </div>
+            <div class="invalid-feedback" *ngIf="general.get('firstName')?.errors?.['maxlength']">
+              Maximum length is {{ general.get('firstName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Middle Name</label>
+            <input type="text" formControlName="middleName" class="form-control"
+                   [class.is-invalid]="general.get('middleName')?.invalid && (general.get('middleName')?.touched || general.get('middleName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('middleName')?.errors?.['maxlength']">
+              Maximum length is {{ general.get('middleName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Last Name <span class="text-danger">*</span></label>
+            <input type="text" formControlName="lastName" class="form-control"
+                   [class.is-invalid]="general.get('lastName')?.invalid && (general.get('lastName')?.touched || general.get('lastName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('lastName')?.errors?.['required']">
+              Last name is required.
+            </div>
+            <div class="invalid-feedback" *ngIf="general.get('lastName')?.errors?.['maxlength']">
+              Maximum length is {{ general.get('lastName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">House Name</label>
+            <input type="text" formControlName="houseName" class="form-control"
+                   [class.is-invalid]="general.get('houseName')?.invalid && (general.get('houseName')?.touched || general.get('houseName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('houseName')?.errors?.['maxlength']">
+              Maximum length is {{ general.get('houseName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
+            <input type="date" formControlName="dateOfBirth" class="form-control"
+                   [class.is-invalid]="general.get('dateOfBirth')?.invalid && (general.get('dateOfBirth')?.touched || general.get('dateOfBirth')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('dateOfBirth')?.errors?.['required']">
+              Date of birth is required.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Unit</label>
+            <input type="text" formControlName="unit" class="form-control"
+                   [class.is-invalid]="general.get('unit')?.invalid && (general.get('unit')?.touched || general.get('unit')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('unit')?.errors?.['maxlength']">
+              Maximum length is {{ general.get('unit')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Occupation</label>
+            <input type="text" formControlName="occupation" class="form-control"
+                   [class.is-invalid]="general.get('occupation')?.invalid && (general.get('occupation')?.touched || general.get('occupation')?.dirty)">
+            <div class="invalid-feedback" *ngIf="general.get('occupation')?.errors?.['maxlength']">
+              Maximum length is {{ general.get('occupation')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-12 text-end mt-2">
+            <button type="submit" class="btn btn-success">Save General</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- BIRTH -->
+      <div *ngIf="activeTab === 'birth'" class="tab-pane active">
+        <form [formGroup]="birth" (ngSubmit)="onSubmitBirth()" class="row g-3" novalidate>
+          <div class="col-md-6">
+            <label class="form-label">Birth Place</label>
+            <input class="form-control" formControlName="birthPlace"
+                   [class.is-invalid]="birth.get('birthPlace')?.invalid && (birth.get('birthPlace')?.touched || birth.get('birthPlace')?.dirty)">
+            <div class="invalid-feedback" *ngIf="birth.get('birthPlace')?.errors?.['maxlength']">
+              Maximum length is {{ birth.get('birthPlace')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Baptism Date</label>
+            <input type="date" class="form-control" formControlName="baptismDate" />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">God Father Name</label>
+            <input class="form-control" formControlName="godFatherName"
+                   [class.is-invalid]="birth.get('godFatherName')?.invalid && (birth.get('godFatherName')?.touched || birth.get('godFatherName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="birth.get('godFatherName')?.errors?.['maxlength']">
+              Maximum length is {{ birth.get('godFatherName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">God Mother Name</label>
+            <input class="form-control" formControlName="godMotherName"
+                   [class.is-invalid]="birth.get('godMotherName')?.invalid && (birth.get('godMotherName')?.touched || birth.get('godMotherName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="birth.get('godMotherName')?.errors?.['maxlength']">
+              Maximum length is {{ birth.get('godMotherName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Baptism Parish</label>
+            <input class="form-control" formControlName="baptismParish"
+                   [class.is-invalid]="birth.get('baptismParish')?.invalid && (birth.get('baptismParish')?.touched || birth.get('baptismParish')?.dirty)">
+            <div class="invalid-feedback" *ngIf="birth.get('baptismParish')?.errors?.['maxlength']">
+              Maximum length is {{ birth.get('baptismParish')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Priest Name</label>
+            <input class="form-control" formControlName="priestName"
+                   [class.is-invalid]="birth.get('priestName')?.invalid && (birth.get('priestName')?.touched || birth.get('priestName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="birth.get('priestName')?.errors?.['maxlength']">
+              Maximum length is {{ birth.get('priestName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-12 text-end mt-2">
+            <button type="submit" class="btn btn-success">Save Birth</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- COMMUNION -->
+      <div *ngIf="activeTab === 'communion'" class="tab-pane active">
+        <form [formGroup]="communion" (ngSubmit)="onSubmitCommunion()" class="row g-3" novalidate>
+          <div class="col-md-4">
+            <label class="form-label">Communion Date</label>
+            <input type="date" class="form-control" formControlName="communionDate" />
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Parish</label>
+            <input class="form-control" formControlName="communionParish"
+                   [class.is-invalid]="communion.get('communionParish')?.invalid && (communion.get('communionParish')?.touched || communion.get('communionParish')?.dirty)">
+            <div class="invalid-feedback" *ngIf="communion.get('communionParish')?.errors?.['maxlength']">
+              Maximum length is {{ communion.get('communionParish')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Place</label>
+            <input class="form-control" formControlName="communionPlace"
+                   [class.is-invalid]="communion.get('communionPlace')?.invalid && (communion.get('communionPlace')?.touched || communion.get('communionPlace')?.dirty)">
+            <div class="invalid-feedback" *ngIf="communion.get('communionPlace')?.errors?.['maxlength']">
+              Maximum length is {{ communion.get('communionPlace')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex align-items-center">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" formControlName="communionHasGodParent" id="commHasGodParent">
+              <label class="form-check-label ms-2" for="commHasGodParent">Has God Father / God Mother</label>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="communion.get('communionHasGodParent')?.value">
+            <label class="form-label">God Parent Name</label>
+            <input class="form-control" formControlName="communionGodParentName"
+                   [class.is-invalid]="communion.get('communionGodParentName')?.invalid && (communion.get('communionGodParentName')?.touched || communion.get('communionGodParentName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="communion.get('communionGodParentName')?.errors?.['maxlength']">
+              Maximum length is {{ communion.get('communionGodParentName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Priest In-charge</label>
+            <input class="form-control" formControlName="communionPriestIncharge"
+                   [class.is-invalid]="communion.get('communionPriestIncharge')?.invalid && (communion.get('communionPriestIncharge')?.touched || communion.get('communionPriestIncharge')?.dirty)">
+            <div class="invalid-feedback" *ngIf="communion.get('communionPriestIncharge')?.errors?.['maxlength']">
+              Maximum length is {{ communion.get('communionPriestIncharge')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-12 text-end mt-2">
+            <button type="submit" class="btn btn-success">Save Communion</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- CONFIRMATION -->
+      <div *ngIf="activeTab === 'confirmation'" class="tab-pane active">
+        <form [formGroup]="confirmation" (ngSubmit)="onSubmitConfirmation()" class="row g-3" novalidate>
+          <div class="col-md-4">
+            <label class="form-label">Confirmation Date</label>
+            <input type="date" class="form-control" formControlName="confirmationDate" />
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Parish</label>
+            <input class="form-control" formControlName="confirmationParish"
+                   [class.is-invalid]="confirmation.get('confirmationParish')?.invalid && (confirmation.get('confirmationParish')?.touched || confirmation.get('confirmationParish')?.dirty)">
+            <div class="invalid-feedback" *ngIf="confirmation.get('confirmationParish')?.errors?.['maxlength']">
+              Maximum length is {{ confirmation.get('confirmationParish')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Place</label>
+            <input class="form-control" formControlName="confirmationPlace"
+                   [class.is-invalid]="confirmation.get('confirmationPlace')?.invalid && (confirmation.get('confirmationPlace')?.touched || confirmation.get('confirmationPlace')?.dirty)">
+            <div class="invalid-feedback" *ngIf="confirmation.get('confirmationPlace')?.errors?.['maxlength']">
+              Maximum length is {{ confirmation.get('confirmationPlace')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex align-items-center">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" formControlName="confirmationHasGodParent" id="confHasGodParent">
+              <label class="form-check-label ms-2" for="confHasGodParent">Has God Father / God Mother</label>
+            </div>
+          </div>
+
+          <div class="col-md-6" *ngIf="confirmation.get('confirmationHasGodParent')?.value">
+            <label class="form-label">God Parent Name</label>
+            <input class="form-control" formControlName="confirmationGodParentName"
+                   [class.is-invalid]="confirmation.get('confirmationGodParentName')?.invalid && (confirmation.get('confirmationGodParentName')?.touched || confirmation.get('confirmationGodParentName')?.dirty)">
+            <div class="invalid-feedback" *ngIf="confirmation.get('confirmationGodParentName')?.errors?.['maxlength']">
+              Maximum length is {{ confirmation.get('confirmationGodParentName')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Bishop / Priest</label>
+            <input class="form-control" formControlName="confirmationBishopOrPriest"
+                   [class.is-invalid]="confirmation.get('confirmationBishopOrPriest')?.invalid && (confirmation.get('confirmationBishopOrPriest')?.touched || confirmation.get('confirmationBishopOrPriest')?.dirty)">
+            <div class="invalid-feedback" *ngIf="confirmation.get('confirmationBishopOrPriest')?.errors?.['maxlength']">
+              Maximum length is {{ confirmation.get('confirmationBishopOrPriest')?.errors?.['maxlength']?.requiredLength }} characters.
+            </div>
+          </div>
+
+          <div class="col-12 text-end mt-2">
+            <button type="submit" class="btn btn-success">Save Confirmation</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ORGANIZATION POSTS -->
+      <!-- ORGANIZATION POST TAB -->
+      <div *ngIf="activeTab === 'org'" class="tab-pane active">
+        <!-- Header -->
+        <div class="d-flex align-items-center mb-3">
+          <h6 class="mb-0">Organization Post</h6>
+          <div class="ms-auto">
+            <button type="button"
+                    class="btn btn-outline-primary btn-sm"
+                    (click)="addOrgRow()"
+                    aria-label="Add organization row">
+              + Add Row
+            </button>
+          </div>
+        </div>
+
+        <!-- NOTE: bind this form to the root 'form' FormGroup so formArrayName has a parent formGroup -->
+        <form [formGroup]="form" (ngSubmit)="onSubmitOrganization()" class="mb-3">
+          <!-- FormArray: organizationPosts is a property on root 'form' -->
+          <div formArrayName="organizationPosts" class="org-list">
+            <div *ngFor="let row of organizationPosts.controls; let i = index"
+                 [formGroupName]="i"
+                 class="org-row card p-3 mb-3 shadow-sm border-light rounded-3">
+
+              <div class="row g-3 align-items-end">
+                <!-- Organization -->
+                <div class="col-md-5">
+                  <label class="form-label fw-semibold" for="org-{{i}}">Organization</label>
+                  <select id="org-{{i}}" class="form-select" formControlName="organization" required>
+                    <option value="">Select organization</option>
+                    <option *ngFor="let org of organizations" [value]="org.id">{{ org.name }}</option>
+                  </select>
+                  <div class="invalid-feedback"
+                       *ngIf="organizationPosts.at(i).get('organization')?.errors?.['required']
+                         && (organizationPosts.at(i).get('organization')?.touched || organizationPosts.at(i).get('organization')?.dirty)">
+                    Organization is required.
+                  </div>
+                </div>
+
+                <!-- Post -->
+                <div class="col-md-5">
+                  <label class="form-label fw-semibold" for="post-{{i}}">Post</label>
+                  <select id="post-{{i}}" class="form-select" formControlName="post" required>
+                    <option value="">Select post</option>
+                    <option *ngFor="let p of posts" [value]="p.id">{{ p.name }}</option>
+                  </select>
+                  <div class="invalid-feedback"
+                       *ngIf="organizationPosts.at(i).get('post')?.errors?.['required']
+                         && (organizationPosts.at(i).get('post')?.touched || organizationPosts.at(i).get('post')?.dirty)">
+                    Post is required.
+                  </div>
+                </div>
+
+                <!-- Remove -->
+                <div class="col-md-2 text-end">
+                  <button type="button"
+                          class="btn btn-outline-danger btn-sm mt-2"
+                          (click)="removeOrgRow(i)"
+                          [disabled]="organizationPosts.length === 1"
+                          aria-label="Remove organization row">
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom actions -->
+          <div class="d-flex justify-content-end mt-3">
+            <button type="button"
+                    class="btn btn-outline-primary btn-sm me-2"
+                    (click)="addOrgRow()"
+                    aria-label="Add organization row">
+              + Add Row
+            </button>
+            <button type="submit" class="btn btn-success">Save Organization Posts</button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

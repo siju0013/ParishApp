@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { Tables } from '../../../Shared/tables/tables';
+import { ParishMembersForm } from './parish-members-form/parish-members-form';
 
 @Component({
   selector: 'app-parish-members',
-  imports: [Tables],
+  imports: [Tables, ParishMembersForm],
   templateUrl: './parish-members.html',
   styleUrl: './parish-members.scss'
 })
 export class ParishMembers {
+  IsNewFormVisible = false;
   memberColumns = [
     { key: 'id', title: 'ID' },
     { key: 'name', title: 'Name' },
@@ -38,5 +40,8 @@ export class ParishMembers {
       this.page++;
       this.loading = false;
     }, 800);
+  }
+  addMembers() {
+    this.IsNewFormVisible = true;
   }
 }

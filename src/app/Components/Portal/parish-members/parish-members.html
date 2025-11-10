@@ -1,5 +1,6 @@
+@if (!IsNewFormVisible){
 <div table-actions class="d-flex flex-row-reverse mb-3">
-  <button class="btn btn-sm btn-primary">
+  <button class="btn btn-sm btn-primary" (click)="addMembers()">
     <i class="bi bi-plus-lg"></i> Add Member
   </button>
 </div>
@@ -10,3 +11,9 @@
             (loadMore)="loadMore()">
 
 </app-tables>
+}
+@else{
+<app-parish-members-form></app-parish-members-form>
+}
+
+

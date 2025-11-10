@@ -45,6 +45,9 @@ export class Activities {
   }
   add() {
     this.IsNewFormVisible = true;
-    this.router.navigate(['/web/activities/New']);
+    //this.router.navigate(['/web/activities/New']);
+  }
+  handleCancelBtnAction(val: boolean) {
+    this.IsNewFormVisible = val;
   }
 }
